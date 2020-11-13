@@ -19,4 +19,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push to DockerHub
         run: |
-          bash ./sync.sh k8s.gcr.io kube-controller-manager:v1.18.3
+          bash ./sync.sh k8s.gcr.io kube-controller-manager v1.18.3
