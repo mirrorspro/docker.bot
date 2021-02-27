@@ -7,7 +7,7 @@ tag="${2}"
 registry="${3}"
 edgePrefix="mirrorspro"
 if [ ! -z "${registry}" ];then
-    edgePrefix="${registry}/"
+    edgePrefix="${registry}"
 fi
 
 edge0=${src0////_}
