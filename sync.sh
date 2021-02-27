@@ -5,13 +5,13 @@
 src0="${1}"
 tag="${2}"
 registry="${3}"
-edgePrefix=""
+edgePrefix="mirrorspro"
 if [ ! -z "${registry}" ];then
     edgePrefix="${registry}/"
 fi
 
 edge0=${src0////_}
-edge="${edgePrefix}mirrorspro/${edge0}:${tag}"
+edge="${edgePrefix}/${edge0}:${tag}"
 src="${src0}:${tag}"
 
 docker pull ${src}
