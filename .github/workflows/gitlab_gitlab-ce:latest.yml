@@ -1,4 +1,4 @@
-name: Synchronize k8s.gcr.io/etcd:3.4.3-0
+name: Synchronize gitlab/gitlab-ce:latest
 on:
   push:
     branches: [ main ]
@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh k8s.gcr.io/etcd 3.4.3-0
+          bash ./sync.sh gitlab/gitlab-ce latest
   aliyun-shenzhen:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.ALIYUN_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh k8s.gcr.io/etcd 3.4.3-0 registry.cn-shenzhen.aliyuncs.com/tomhjx/mirrorspro
+          bash ./sync.sh gitlab/gitlab-ce latest registry.cn-shenzhen.aliyuncs.com/tomhjx/mirrorspro
   aliyun-guangzhou:
     runs-on: ubuntu-latest
     steps:
@@ -45,5 +45,5 @@ jobs:
           password: ${{ secrets.ALIYUN_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh k8s.gcr.io/etcd 3.4.3-0 registry.cn-guangzhou.aliyuncs.com/tomhjx/mirrorspro
+          bash ./sync.sh gitlab/gitlab-ce latest registry.cn-guangzhou.aliyuncs.com/tomhjx/mirrorspro
 
