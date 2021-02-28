@@ -20,19 +20,6 @@ jobs:
       - name: Push
         run: |
           bash ./sync.sh openresty/openresty 1.19.3.1-3-alpine
-  aliyun-shenzhen:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Login
-        uses: docker/login-action@v1
-        with:
-          registry: registry.cn-shenzhen.aliyuncs.com
-          username: ${{ secrets.ALIYUN_UAERNAME }}
-          password: ${{ secrets.ALIYUN_PASSWORD }}
-      - name: Push
-        run: |
-          bash ./sync.sh openresty/openresty 1.19.3.1-3-alpine registry.cn-shenzhen.aliyuncs.com/tomhjx/mirrorspro
   aliyun-guangzhou:
     runs-on: ubuntu-latest
     steps:
