@@ -1,4 +1,4 @@
-name: Synchronize quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.32.0
+name: Synchronize docker.io/curlimages/curl:8.10.1
 on:
   push:
     branches: [ main ]
@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh quay.io/kubernetes-ingress-controller/nginx-ingress-controller 0.32.0
+          bash ./sync.sh docker.io/curlimages/curl 8.10.1
   aliyun-guangzhou:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.ALIYUN_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh quay.io/kubernetes-ingress-controller/nginx-ingress-controller 0.32.0 registry.cn-guangzhou.aliyuncs.com/tomhjx/mirrorspro
+          bash ./sync.sh docker.io/curlimages/curl 8.10.1 registry.cn-guangzhou.aliyuncs.com/tomhjx/mirrorspro
   aliyun-hongkong:
     runs-on: ubuntu-latest
     steps:
@@ -45,4 +45,4 @@ jobs:
           password: ${{ secrets.ALIYUN_PASSWORD }}
       - name: Push
         run: |
-          bash ./sync.sh quay.io/kubernetes-ingress-controller/nginx-ingress-controller 0.32.0 registry.cn-hongkong.aliyuncs.com/tomhjx/mirrorspro
+          bash ./sync.sh docker.io/curlimages/curl 8.10.1 registry.cn-hongkong.aliyuncs.com/tomhjx/mirrorspro
