@@ -1,0 +1,48 @@
+name: Synchronize tomhjx/busybox:playwright.a1
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Push
+        run: |
+          bash ./sync.sh tomhjx/busybox playwright.a1
+  aliyun-guangzhou:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login
+        uses: docker/login-action@v1
+        with:
+          registry: registry.cn-guangzhou.aliyuncs.com
+          username: ${{ secrets.ALIYUN_UAERNAME }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+      - name: Push
+        run: |
+          bash ./sync.sh tomhjx/busybox playwright.a1 registry.cn-guangzhou.aliyuncs.com/tomhjx/mirrorspro
+  aliyun-hongkong:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login
+        uses: docker/login-action@v1
+        with:
+          registry: registry.cn-hongkong.aliyuncs.com
+          username: ${{ secrets.ALIYUN_UAERNAME }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+      - name: Push
+        run: |
+          bash ./sync.sh tomhjx/busybox playwright.a1 registry.cn-hongkong.aliyuncs.com/tomhjx/mirrorspro
